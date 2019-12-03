@@ -8,9 +8,6 @@ trigger:
 resources:
 - repo: self
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 stages:
 - stage: Build
   displayName: Build and push stage
