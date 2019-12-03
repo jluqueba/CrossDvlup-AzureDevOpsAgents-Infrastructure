@@ -14,6 +14,6 @@ az storage container create --name test --auth-mode key --connection-string $con
 
 echo restricting access to $agentsSubNetName subnet only
 az storage account update --resource-group $resourceGroup --name $accountName --default-action Deny > /dev/null
-az network vnet subnet update --resource-group $vNetResourceGroup  --vnet-name $vnetName --name azure-devops-agents --service-endpoints "Microsoft.Storage" > /dev/null
+az network vnet subnet update --resource-group $vNetResourceGroup --vnet-name $vnetName --name $agentsSubNetName --service-endpoints "Microsoft.Storage" > /dev/null
 subnetid=$(az network vnet subnet show --resource-group $vNetResourceGroup --vnet-name $vnetName --name $agentsSubNetName --query id --output tsv)
 az storage account network-rule add --resource-group $resourceGroup --account-name $accountName --subnet $subnetid > /dev/null
